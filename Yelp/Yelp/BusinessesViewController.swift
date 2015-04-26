@@ -10,7 +10,6 @@ import UIKit
 
 class BusinessesViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     var businesses: [Business]!
     
     override func viewDidLoad() {
@@ -24,9 +23,7 @@ class BusinessesViewController: UIViewController {
 //                println(business.address!)
 //            }
 //        })
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-    
+        
         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             
@@ -40,14 +37,6 @@ class BusinessesViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func numberOfRowsInSection(section: NSInteger) -> NSInteger {
-        return self.businesses.count
-    }
-    
-    func cellForRowIndexPath(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-        
     }
 
     /*
